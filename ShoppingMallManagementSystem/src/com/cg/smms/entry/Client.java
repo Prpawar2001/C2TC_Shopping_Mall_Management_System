@@ -133,7 +133,7 @@ public class Client {
 //		u.setType("prime");
 //		uri.beginTransaction();
 //		User r = uri.searchUser(u);
-////		System.out.println(r.getName());
+//		System.out.println(r.getName());
 //		uri.commitTransaction();
 		
 		
@@ -141,10 +141,235 @@ public class Client {
 		
 //   	**********  Association Starts Here  **********
 		
+//		AdminServiceImpl asi = new AdminServiceImpl();
+//		CustomerServiceImpl csi = new CustomerServiceImpl();
+//		EmployeeServiceImpl esi = new EmployeeServiceImpl();
+//		OrderServiceImpl osi = new OrderServiceImpl();
+//		ShopServiceImpl ssi = new ShopServiceImpl();
+//		UserServiceImpl usi = new UserServiceImpl();
 		
-//		TO START WE HAVE TO CREATE A MALL FIRST  ------------------------------------------------------------------>
+//		----------------------------------------  TO START WE HAVE TO CREATE A MALL FIRST  --------------------------------------------->
+
+//		MallRepositoryImpl mallrepo = new MallRepositoryImpl();
+//		
+//		mallrepo.beginTransaction();
+//		
+//		User user = new User();
+//		MallAdmin ma = new MallAdmin();
+//		Mall mall = new Mall();
+//		
+////        Adding user details
+//		user.setName("Akash");
+//		user.setPassword("Ak01");
+//		user.setType("Mall Admin");
+//	
+////    Adding MallAdmin details
+//		ma.setName("Akash");
+//		ma.setPassword("Ak01");
+//		ma.setPhone("9856321475");
+//		ma.setUser(user);
+//		
+////    Adding Mall details
+//		mall.setMallName("Foodie");
+//		mall.setCategories("Food");
+//		mall.setLocation("Thane");
+//		mall.setMallAdmin(ma);
+//		
+//		mallrepo.addMall(mall);                                   //  Adding Mall with MallAdmin details
+//		System.out.println("New Mall is Added !!");		
+//		mallrepo.commitTransaction();
+		
+//		-------------------------------------------  Let's Create Shops now for Mall  ------------------------------------------------>
+		
+////		Along with Shop we are Storing shop owner too
+		
+//		User user = new User();
+//		ShopOwner so = new ShopOwner();
+//		Shop shop = new Shop();
+//		ShopOwnerRepositoryImpl soi = new ShopOwnerRepositoryImpl();
+//		MallRepositoryImpl mri = new MallRepositoryImpl();
+//		LocalDate date = LocalDate.of(2000, 10, 1);
+//		
+//		soi.beginTransaction();
+//		
+////		Adding user details
+//		user.setName("Neeraj");
+//		user.setPassword("Neyo01");
+//		user.setType("Shop Owner");
+//		
+////		Adding mall details
+//		Mall mall = mri.searchMall(2);                          //  getting the mall information with (id)
+//		shop.setShopName("KFC");
+//		shop.setShopCategory("Food");
+//		shop.setShopStatus("Open");
+//		shop.setLeaseStatus("Paid");
+//		shop.setMall(mall);
+//		
+////		Adding Shop Owner details
+//		so.setName("Neeraj");
+//		so.setDob(date);
+//		so.setAddress("Mumbai");
+//		so.setUser(user);
+//		so.setShop(shop);
+//		
+//		soi.addShopOwner(so);                                   //  Adding Shop with Shop Owner details
+//		System.out.println("New shop is Added !!");		
+//		soi.commitTransaction();
+		
+//		----------------------------------------------  Add Shop Employee  ----------------------------------------------------------->
+		
+//		ShopServiceImpl ssi = new ShopServiceImpl();
+//		LocalDate date = LocalDate.now();
+//		
+////		employee details (1)
+//		Employee emp = new Employee();
+//		emp.setName("Raj");
+//		emp.setDate(date);
+//		emp.setAddress("Thane");
+//		emp.setDesignation("Manager");
+//		emp.setSalary(1000);
+//		
+////		employee details (2)
+//		Employee emp1 = new Employee();
+//		emp1.setName("kiran");
+//		emp1.setDate(date);
+//		emp1.setAddress("Thane");
+//		emp1.setDesignation("Salesman");
+//		emp1.setSalary(400);
+//		
+//		Shop shop = ssi.searchShopById(1);                   //  Getting shop for adding employees
+//		shop.addEmployee(emp);
+//		shop.addEmployee(emp1);
+//		
+//		ssi.updateShop(shop);								 //  Updating shop (added employees)
+//		System.out.println("Employees added Successfully");
+		
+//		----------------------------------------------  Add Shop Items  ----------------------------------------------------------->
+		
+		ShopServiceImpl ssi = new ShopServiceImpl();
+		ItemRepositoryImpl iri = new ItemRepositoryImpl();
+		
+//		Item details (1)
+//		Item item = new Item();
+//		item.setCategory("New");
+//		item.setManufacturing(LocalDate.of(2022, 01, 01));
+//		item.setExpiry(LocalDate.of(2032, 01, 01));
+//		item.setName("LG Master");
+//		item.setPrice(20000);
+		
+//		Item details (2)
+//		Item item1 = new Item();
+//		item1.setCategory("New");
+//		item1.setManufacturing(LocalDate.of(2022, 01, 01));
+//		item1.setExpiry(LocalDate.of(2032, 01, 01));
+//		item1.setName("LG double door");
+//		item1.setPrice(30000);
+		
+		Shop shop = ssi.searchShopById(2);                            //  Getting shop for adding items
+//		shop.addItems(item);
+//		shop.addItems(item1);
+		
+//		ssi.addShop(shop);
+		
+		Item item = iri.searchItem(4);	                              //  Update individual item
+		item.setCategory("New");
+		item.setShop(shop);
+		iri.beginTransaction();
+		iri.updateItem(item);
+		iri.commitTransaction();
+		
+//		ssi.updateShop(shop);                                          //  Updating shop (added items)
+//		System.out.println("Items added Successfully");
 		
 		
+//		----------------------------------------------  Add Customer Details  --------------------------------------------------------->
+	
+//		CustomerRepositoryImpl cri = new CustomerRepositoryImpl();
+//		ShopServiceImpl ssi = new ShopServiceImpl();
+//		Shop shop = ssi.searchShopById(1);                            //  Getting Shop details whose customer is creating
+//		
+////		Adding user details
+//		User user = new User();
+//		user.setName("Sneha");
+//		user.setPassword("Sneha20");
+//		user.setType("User");
+//		
+////		Adding customer details
+//		Customer cust = new Customer();
+//		cust.setName("Sneha");
+//		cust.setEmail("Snehu@gmail.com");
+//		cust.setPhone("8869547123");
+//		cust.setUser(user);
+//		cust.setShop(shop);
+//		
+//		cri.beginTransaction();
+//		cri.addCustomer(cust);                                        //  Creating customer
+//		cri.commitTransaction();
+//		System.out.println("Customer added Successfully");	
+		
+
+//		------------------------------------------  User Login/LogOut Section  ----------------------------------------------------->
+		
+////		****  LogIn  ****
+//		CustomerServiceImpl csi = new CustomerServiceImpl();
+//		
+//		User user = new User();
+//		user.setId(6);
+//		user.setPassword("Sneha20");
+//		csi.login(user);
+//		System.out.println("done");
+	
+////		****  LogOut  ****
+//		csi.logout();
+		
+//		----------------------------------------------  Customer Services   ----------------------------------------------------->
+		
+//		CustomerServiceImpl csi = new CustomerServiceImpl();
+//		CustomerRepositoryImpl cri = new CustomerRepositoryImpl();	
+//		ItemRepositoryImpl iri = new ItemRepositoryImpl();
+//		LocalDate date = LocalDate.now();
+//		OrderServiceImpl osi = new OrderServiceImpl();
+		
+//		iri.searchItemslist("la");                                  //  ***  Search products we want using name ... ***
+
+////		Customer Login
+		
+//		User user = new User();
+//		user.setId(6);
+//		user.setPassword("Sneha20");
+//		user=csi.login(user);
+//		Customer customer = user.getCustomer();
+//		
+//		if(customer==null)
+//		{
+//			System.out.println("Try Again !!!");
+//		}else 
+//		{
+//			Item item = iri.searchItem(1);	
+//			item.getName();
+//			float t =item.getPrice();
+//			Shop shop = item.getShop();
+//			
+//			OrderDetails od = new OrderDetails();
+//			od.setDateOfPurchase(date);
+//			od.setTotal(t);
+//			od.setPaymentMode("Cash on Delivery");
+//			od.setShop(shop);
+//			od.setCustomer(customer);
+//			osi.addOrder(od);
+//			System.out.println("\nOrder Placed.....");
+//		}
+		
+//		Cancel Order
+		
+//      osi.cancelOrder(5);
+		
+//		Update Order
+		
+//		OrderDetails od = osi.searchOrder(2);
+//		od.setPaymentMode("UPI Transaction");
+//		osi.updateOrder(od);
 		
 	}
+	
 }

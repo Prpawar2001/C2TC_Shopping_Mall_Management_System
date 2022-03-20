@@ -34,8 +34,8 @@ EntityManager entityManager;
 	
 	public User searchUser(User user) {
 		int a= user.getId();
-		Query query = entityManager.createQuery("Select u from User u where u=1");
-		return (User)query.getSingleResult();
+		User u = entityManager.find(User.class, a);
+		return u;
 	}
 	
 	public void commitTransaction() {

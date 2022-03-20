@@ -37,7 +37,7 @@ public class Item implements Serializable {
 	
 //	** Getters and Setters **
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {

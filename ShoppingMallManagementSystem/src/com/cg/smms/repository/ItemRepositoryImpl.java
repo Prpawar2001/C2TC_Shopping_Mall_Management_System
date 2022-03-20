@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import com.cg.smms.entities.Item;
 import com.cg.smms.entities.User;
+import com.cg.smms.exception.InvalidItemException;
 
 public class ItemRepositoryImpl implements IItemRepository {
 
@@ -24,30 +25,64 @@ public class ItemRepositoryImpl implements IItemRepository {
 
 	@Override
 	public Item updateItem(Item item) {
-		entityManager.merge(item);
-		return item;
+		int a = item.getId();
+		Item i = entityManager.find(Item.class, a);
+		try {
+			if(i==null) {
+				throw new InvalidItemException("Item not Found !!");
+			}
+			else {
+				entityManager.merge(item);
+			}
+		}catch(InvalidItemException e)
+		{
+			System.out.println(e);
+		}
+		return null;
 	}
 
 	@Override
 	public Item searchItem(int id) {
 		Item item = entityManager.find(Item.class, id);
+		try {
+			if(item==null) {
+				throw new InvalidItemException("Item not Found !!");
+			}
+			else {
+				System.out.println("Item name:- "+ item.getName());
+			}
+		}catch(InvalidItemException e)
+		{
+			System.out.println(e);
+		}
 		return item;
 	}
 
 	@Override
 	public Item deleteItem(int id) {
 		Item item = entityManager.find(Item.class, id);
-		entityManager.remove(item);
+		try {
+			if(item==null) {
+				throw new InvalidItemException("Item not Found !!");
+			}
+			else {
+				entityManager.remove(item);
+			}
+		}catch(InvalidItemException e)
+		{
+			System.out.println(e);
+		}
 		return item;
 	}
 	
 	public void searchItemslist(String str) {
-		Query query = entityManager.createQuery("Select i from Item i where i.name like % :str %");  
+		Query query = entityManager.createQuery("Select i from Item i where i.name LIKE :a ");  
+		query.setParameter("a", "%"+ str +"%");
 		@SuppressWarnings("unchecked")  
 		List<Item> list =query.getResultList();
 	    System.out.println("Item :");  
 	    for(Item s:list) {  
-	    	System.out.println(s);
+	    	System.out.println(s.getId() + " " + s.getName() + "|  Price:-" + s.getPrice());
 	     } 
 	}
 	

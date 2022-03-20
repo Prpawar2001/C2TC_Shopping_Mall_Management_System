@@ -87,6 +87,14 @@ public class Customer implements Serializable {
 		this.email = email;
 	}	
 	
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
 	public void addOrderDetails(OrderDetails orderDetails) {
 		orderDetails.setCustomer(this);
 		this.getOrderDetails().add(orderDetails);

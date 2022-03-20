@@ -25,9 +25,6 @@ public class Shop implements Serializable {
 	@Column(name="shop_name")
 	private String shopName;
 	
-	@Column(name="customers")
-	private String customers;
-	
 	@Column(name="shop_status")
 	private String shopStatus;
 	
@@ -91,12 +88,7 @@ public class Shop implements Serializable {
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
 	}
-	public String getCustomers() {
-		return customers;
-	}
-	public void setCustomers(String customers) {
-		this.customers = customers;
-	}
+
 	public String getShopStatus() {
 		return shopStatus;
 	}

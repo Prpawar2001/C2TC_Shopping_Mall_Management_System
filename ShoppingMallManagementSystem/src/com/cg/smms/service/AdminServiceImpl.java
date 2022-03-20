@@ -10,7 +10,6 @@ public class AdminServiceImpl implements IAdminService {
 	UserRepositoryImpl uri;
 	
 	public AdminServiceImpl() {
-		
 		sri = new ShopRepositoryImpl();
 		uri = new UserRepositoryImpl();
 	}
@@ -33,12 +32,16 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public User login(User user) {
+		String a = user.getPassword();
 		uri.beginTransaction();
-		User u = uri.searchUser(user);          // getting info using JPQL Query from User Repository --> searchUser()
-		if(u==null) {
-			System.out.println("** No User Data Found!! **");
+		User u = uri.searchUser(user);          // getting info of user from User Database
+		String b = u.getPassword();
+		boolean ans = a.equals(b);
+		if(ans==true) {
+			System.out.println("** Dear "+ u.getName() +", Login Successful !!! **");
+			System.out.println("You are " + u.getType());
 		}else {
-			System.out.println("** Dear user, Login Successful !!! **");
+			System.out.println("** Invalid input!! **");
 		}
 		uri.commitTransaction();
 		return null;

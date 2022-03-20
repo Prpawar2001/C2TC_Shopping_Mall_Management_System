@@ -3,6 +3,7 @@ package com.cg.smms.repository;
 import javax.persistence.EntityManager;
 
 import com.cg.smms.entities.OrderDetails;
+import com.cg.smms.exception.OrderCancelException;
 
 public class OrderRepositoryImpl implements IOrderRepository {
 
@@ -28,8 +29,18 @@ public class OrderRepositoryImpl implements IOrderRepository {
 	@Override
 	public OrderDetails deleteOrderDetails(int id) {
 		OrderDetails od = entityManager.find(OrderDetails.class, id);
-		entityManager.remove(od);
-		return od;
+		try {
+			if(od==null) {
+				throw new OrderCancelException("Order Details Not Found !!");
+			}
+			else {
+				entityManager.remove(od);
+			}
+		}catch (OrderCancelException e)
+		{
+			System.out.println(e);
+		}
+		return null;
 	}
 	
 	public void commitTransaction() {

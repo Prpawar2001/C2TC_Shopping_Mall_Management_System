@@ -40,9 +40,9 @@ public class OrderServiceImpl implements IOrderService {
 	@Override
 	public OrderDetails searchOrder(int id) {
 		ori.beginTransaction();
-		ori.deleteOrderDetails(id);
+		OrderDetails od = ori.searchOrderDetails(id);
 		ori.commitTransaction();
-		return null;
+		return od;
 	}
 	
 	@Override

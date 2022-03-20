@@ -2,15 +2,19 @@ package com.cg.smms.service;
 
 import com.cg.smms.entities.Employee;
 import com.cg.smms.entities.Shop;
+import com.cg.smms.entities.User;
 import com.cg.smms.repository.EmployeeRepositoryImpl;
 import com.cg.smms.repository.ShopRepositoryImpl;
+import com.cg.smms.repository.UserRepositoryImpl;
 
 public class ShopServiceImpl implements IShopService {
 
 	private ShopRepositoryImpl sri;
+	private UserRepositoryImpl uri;
 	
 	public ShopServiceImpl() {
 		sri = new ShopRepositoryImpl();
+		uri = new UserRepositoryImpl();
 	}
 	@Override
 	public Shop addShop(Shop shop) {
@@ -57,6 +61,27 @@ public class ShopServiceImpl implements IShopService {
 		sri.beginTransaction();
 		sri.deleteShop(id);
 		sri.commitTransaction();
+		return false;
+	}
+	
+	public User login(User user) {
+		String a = user.getPassword();
+		uri.beginTransaction();
+		User u = uri.searchUser(user);          // getting info of user from User Database
+		String b = u.getPassword();
+		boolean ans = a.equals(b);
+		if(ans==true) {
+			System.out.println("** Dear "+ u.getName() +", Login Successful !!! **");
+			System.out.println("You are " + u.getType());
+		}else {
+			System.out.println("** Invalid input!! **");
+		}
+		uri.commitTransaction();
+		return null;
+	}
+
+	public boolean logout() {
+		System.out.println("** Logout... Visit Again **");
 		return false;
 	}
 
