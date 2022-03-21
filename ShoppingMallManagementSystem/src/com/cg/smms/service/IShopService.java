@@ -11,6 +11,6 @@ public interface IShopService {
 	abstract boolean addEmployee(Employee employee);
 	abstract boolean updateEmployee(Employee employee);
 	abstract boolean deleteShop(int id);
-//	abstract Item addItem(Item item);
+	abstract Item addItem(Item item);
 
 }

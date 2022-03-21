@@ -246,8 +246,8 @@ public class Client {
 		
 //		----------------------------------------------  Add Shop Items  ----------------------------------------------------------->
 		
-		ShopServiceImpl ssi = new ShopServiceImpl();
-		ItemRepositoryImpl iri = new ItemRepositoryImpl();
+//		ShopServiceImpl ssi = new ShopServiceImpl();
+//		ItemRepositoryImpl iri = new ItemRepositoryImpl();
 		
 //		Item details (1)
 //		Item item = new Item();
@@ -265,24 +265,24 @@ public class Client {
 //		item1.setName("LG double door");
 //		item1.setPrice(30000);
 		
-		Shop shop = ssi.searchShopById(2);                            //  Getting shop for adding items
+//		Shop shop = ssi.searchShopById(2);                            //  Getting shop for adding items
 //		shop.addItems(item);
 //		shop.addItems(item1);
 		
 //		ssi.addShop(shop);
 		
-		Item item = iri.searchItem(4);	                              //  Update individual item
-		item.setCategory("New");
-		item.setShop(shop);
-		iri.beginTransaction();
-		iri.updateItem(item);
-		iri.commitTransaction();
+//		Item item = iri.searchItem(4);	                              //  Update individual item
+//		item.setCategory("New");
+//		item.setShop(shop);
+//		iri.beginTransaction();
+//		iri.updateItem(item);
+//		iri.commitTransaction();
 		
 //		ssi.updateShop(shop);                                          //  Updating shop (added items)
 //		System.out.println("Items added Successfully");
 		
 		
-//		----------------------------------------------  Add Customer Details  --------------------------------------------------------->
+//		-----------------------------------------------  Add Customer Details  --------------------------------------------------------->
 	
 //		CustomerRepositoryImpl cri = new CustomerRepositoryImpl();
 //		ShopServiceImpl ssi = new ShopServiceImpl();
@@ -311,12 +311,13 @@ public class Client {
 //		------------------------------------------  User Login/LogOut Section  ----------------------------------------------------->
 		
 ////		****  LogIn  ****
-//		CustomerServiceImpl csi = new CustomerServiceImpl();
+		
+//		UserServiceImpl usi = new UserServiceImpl();
 //		
 //		User user = new User();
-//		user.setId(6);
-//		user.setPassword("Sneha20");
-//		csi.login(user);
+//		user.setId(8);
+//		user.setPassword("sneha20");
+//		usi.login(user);
 //		System.out.println("done");
 	
 ////		****  LogOut  ****
@@ -330,7 +331,7 @@ public class Client {
 //		LocalDate date = LocalDate.now();
 //		OrderServiceImpl osi = new OrderServiceImpl();
 		
-//		iri.searchItemslist("la");                                  //  ***  Search products we want using name ... ***
+//		iri.searchItemslist("la");                                  //  ***  Search list products using name ... ***
 
 ////		Customer Login
 		
@@ -356,19 +357,81 @@ public class Client {
 //			od.setPaymentMode("Cash on Delivery");
 //			od.setShop(shop);
 //			od.setCustomer(customer);
-//			osi.addOrder(od);
+//			osi.addOrder(od);                                       // adding Order
 //			System.out.println("\nOrder Placed.....");
 //		}
 		
-//		Cancel Order
+//		Cancel Order ----------------------------------------
 		
-//      osi.cancelOrder(5);
+//      osi.cancelOrder(5);                                         //  Order Cancel Exception Handled.......
 		
-//		Update Order
+//		Update Order ----------------------------------------
 		
 //		OrderDetails od = osi.searchOrder(2);
 //		od.setPaymentMode("UPI Transaction");
 //		osi.updateOrder(od);
+		
+
+//		---------------------------------------------- ** Personal Module : Employee ** ----------------------------------------------------->
+	
+//	    -------------  Add Employee----------------------------------------------------------------------------------------------->
+		
+//		EmployeeServiceImpl esi = new EmployeeServiceImpl();
+//		ShopServiceImpl ssi = new ShopServiceImpl();
+//		LocalDate date = LocalDate.now();
+//		
+//		Shop shop = ssi.searchShopById(2);
+//		
+//		Employee emp = new Employee();
+//		emp.setAddress("Mulund");
+//		emp.setDate(date);
+//		emp.setName("Raj");
+//		emp.setDesignation("SalesMan");
+//		emp.setSalary(4000);
+//		emp.setShop(shop);
+//		
+//		Employee emp1 = new Employee();
+//		emp1.setAddress("Bhandup");
+//		emp1.setDate(date);
+//		emp1.setName("Prakash");
+//		emp1.setDesignation("Manager");
+//		emp1.setSalary(6000);
+//		emp1.setShop(shop);
+//		
+//		esi.addEmployee(emp);
+//		esi.addEmployee(emp1);
+//		
+//		System.out.println("Employees added");
+		
+//		-------------  Update Employee------------------------------------------------------------------------------------------>
+		
+//		EmployeeServiceImpl esi = new EmployeeServiceImpl();
+//		ShopServiceImpl ssi = new ShopServiceImpl();
+//		LocalDate date = LocalDate.now();
+//		
+//		Employee emp = esi.searchEmployee(4);
+//		
+//		emp.setName("Om");
+//		emp.setSalary(10000);
+//		
+//		esi.updateEmployee(emp);
+//		
+//		System.out.println("Employees updated\n");
+//		
+//		esi.searchEmployee(4);
+
+//		--------------  Search Employee------------------------------------------------------------------------------------------>
+		
+//		EmployeeServiceImpl esi = new EmployeeServiceImpl();
+		
+//		esi.searchEmployee(10);                                                 //  Object Not Found Exception handled here.....
+//		esi.searchEmployee(1);
+		
+//		--------------  Delete Employee------------------------------------------------------------------------------------------>
+		
+//		EmployeeServiceImpl esi = new EmployeeServiceImpl();
+//		
+//		esi.deleteEmployee(6);
 		
 	}
 	

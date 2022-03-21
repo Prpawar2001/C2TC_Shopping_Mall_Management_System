@@ -1,9 +1,11 @@
 package com.cg.smms.service;
 
 import com.cg.smms.entities.Employee;
+import com.cg.smms.entities.Item;
 import com.cg.smms.entities.Shop;
 import com.cg.smms.entities.User;
 import com.cg.smms.repository.EmployeeRepositoryImpl;
+import com.cg.smms.repository.ItemRepositoryImpl;
 import com.cg.smms.repository.ShopRepositoryImpl;
 import com.cg.smms.repository.UserRepositoryImpl;
 
@@ -11,10 +13,12 @@ public class ShopServiceImpl implements IShopService {
 
 	private ShopRepositoryImpl sri;
 	private UserRepositoryImpl uri;
+	private ItemRepositoryImpl iri;
 	
 	public ShopServiceImpl() {
 		sri = new ShopRepositoryImpl();
 		uri = new UserRepositoryImpl();
+		iri = new ItemRepositoryImpl();
 	}
 	@Override
 	public Shop addShop(Shop shop) {
@@ -83,6 +87,13 @@ public class ShopServiceImpl implements IShopService {
 	public boolean logout() {
 		System.out.println("** Logout... Visit Again **");
 		return false;
+	}
+	@Override
+	public Item addItem(Item item) {
+		iri.beginTransaction();
+		iri.addItem(item);
+		iri.commitTransaction();
+		return null;
 	}
 
 }

@@ -28,7 +28,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
 		{
 			if(emp==null)
 			{
-				throw new ObjectNotFoundException("Please provide Employee ID to update deatails !!\n");
+				throw new ObjectNotFoundException("Please provide correct Employee ID !!\n");
 			}
 			else
 			{
@@ -81,7 +81,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
 		{
 			if(emp==null)
 			{
-				throw new ObjectNotFoundException("Employee");
+				throw new ObjectNotFoundException("Can't delete unknown employee !!\n");
 			}
 			else
 			{
