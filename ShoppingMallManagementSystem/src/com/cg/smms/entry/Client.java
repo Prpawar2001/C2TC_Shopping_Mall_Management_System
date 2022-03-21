@@ -336,7 +336,7 @@ public class Client {
 		
 //		CustomerServiceImpl csi = new CustomerServiceImpl();
 //		CustomerRepositoryImpl cri = new CustomerRepositoryImpl();	
-		ItemRepositoryImpl iri = new ItemRepositoryImpl();
+//		ItemRepositoryImpl iri = new ItemRepositoryImpl();
 //		LocalDate date = LocalDate.now();
 //		OrderServiceImpl osi = new OrderServiceImpl();
 		
@@ -355,8 +355,8 @@ public class Client {
 //			System.out.println("Try Again !!!");
 //		}else 
 //		{
-			Item item = iri.searchItem(10);	                     //  Invalid Item Exception occurs.....
-			System.out.println("done !!");
+//			Item item = iri.searchItem(10);	                     //  Invalid Item Exception occurs.....
+//			System.out.println("done !!");
 			
 //			item.getName();
 //			float t =item.getPrice();
