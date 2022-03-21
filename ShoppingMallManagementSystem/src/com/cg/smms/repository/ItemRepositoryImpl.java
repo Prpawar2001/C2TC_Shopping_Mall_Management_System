@@ -80,10 +80,14 @@ public class ItemRepositoryImpl implements IItemRepository {
 		query.setParameter("a", "%"+ str +"%");
 		@SuppressWarnings("unchecked")  
 		List<Item> list =query.getResultList();
-	    System.out.println("Item :");  
-	    for(Item s:list) {  
-	    	System.out.println(s.getId() + " " + s.getName() + "|  Price:-" + s.getPrice());
-	     } 
+		if(list.size()==0) {
+			System.out.println("No similar item Found...");
+		} else {
+			System.out.println("Item :");  
+		    for(Item s:list) {  
+		    	System.out.println(s.getId() + " " + s.getName() + "|  Price:-" + s.getPrice());
+		    } 
+		}
 	}
 	
 	public void commitTransaction() {

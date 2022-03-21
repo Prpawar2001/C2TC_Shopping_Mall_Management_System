@@ -139,6 +139,8 @@ public class Client {
 		
 //   	**********  CRUD Operations Done  **********
 		
+//		------------------------------------------  SHOPPING MALL MANAGEMENT SYSTEM  ------------------------------------------------>	
+		
 //   	**********  Association Starts Here  **********
 		
 //		AdminServiceImpl asi = new AdminServiceImpl();
@@ -164,8 +166,8 @@ public class Client {
 //		user.setType("Mall Admin");
 //	
 ////    Adding MallAdmin details
-//		ma.setName("Akash");
-//		ma.setPassword("Ak01");
+//		ma.setName(user.getName());
+//		ma.setPassword(user.getPassword());
 //		ma.setPhone("9856321475");
 //		ma.setUser(user);
 //		
@@ -186,20 +188,21 @@ public class Client {
 //		User user = new User();
 //		ShopOwner so = new ShopOwner();
 //		Shop shop = new Shop();
+//		ShopServiceImpl ssi = new ShopServiceImpl();
 //		ShopOwnerRepositoryImpl soi = new ShopOwnerRepositoryImpl();
 //		MallRepositoryImpl mri = new MallRepositoryImpl();
 //		LocalDate date = LocalDate.of(2000, 10, 1);
-//		
-//		soi.beginTransaction();
-//		
+////		
+////		soi.beginTransaction();
+////		
 ////		Adding user details
-//		user.setName("Neeraj");
-//		user.setPassword("Neyo01");
+//		user.setName("Vikas");
+//		user.setPassword("viKas11");
 //		user.setType("Shop Owner");
 //		
 ////		Adding mall details
 //		Mall mall = mri.searchMall(2);                          //  getting the mall information with (id)
-//		shop.setShopName("KFC");
+//		shop.setShopName("Pizza Hut");
 //		shop.setShopCategory("Food");
 //		shop.setShopStatus("Open");
 //		shop.setLeaseStatus("Paid");
@@ -211,10 +214,16 @@ public class Client {
 //		so.setAddress("Mumbai");
 //		so.setUser(user);
 //		so.setShop(shop);
-//		
+	
 //		soi.addShopOwner(so);                                   //  Adding Shop with Shop Owner details
 //		System.out.println("New shop is Added !!");		
 //		soi.commitTransaction();
+		
+//		***  Search Shop ***
+		
+//		ssi.searchShopById(5);                                   //  Shop Not Found Exception Handled....
+//		System.out.println("done !!");
+				
 		
 //		----------------------------------------------  Add Shop Employee  ----------------------------------------------------------->
 		
@@ -315,8 +324,8 @@ public class Client {
 //		UserServiceImpl usi = new UserServiceImpl();
 //		
 //		User user = new User();
-//		user.setId(8);
-//		user.setPassword("sneha20");
+//		user.setId(6);
+//		user.setPassword("Sneha20");
 //		usi.login(user);
 //		System.out.println("done");
 	
@@ -327,11 +336,11 @@ public class Client {
 		
 //		CustomerServiceImpl csi = new CustomerServiceImpl();
 //		CustomerRepositoryImpl cri = new CustomerRepositoryImpl();	
-//		ItemRepositoryImpl iri = new ItemRepositoryImpl();
+		ItemRepositoryImpl iri = new ItemRepositoryImpl();
 //		LocalDate date = LocalDate.now();
 //		OrderServiceImpl osi = new OrderServiceImpl();
 		
-//		iri.searchItemslist("la");                                  //  ***  Search list products using name ... ***
+//		iri.searchItemslist("o");                               //  ***  Search list products using name ... ***(JPQL Query)
 
 ////		Customer Login
 		
@@ -346,7 +355,9 @@ public class Client {
 //			System.out.println("Try Again !!!");
 //		}else 
 //		{
-//			Item item = iri.searchItem(1);	
+			Item item = iri.searchItem(10);	                     //  Invalid Item Exception occurs.....
+			System.out.println("done !!");
+			
 //			item.getName();
 //			float t =item.getPrice();
 //			Shop shop = item.getShop();
